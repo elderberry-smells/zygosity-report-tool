@@ -4,9 +4,7 @@ conn = sqlite3.connect('zygodb.sqlite')
 conn.text_factory = str
 cur = conn.cursor()
 
-cur.executescript('''
-
- CREATE TABLE zygosity (
+cur.execute('''CREATE TABLE zygosity (
             qcid TEXT UNIQUE PRIMARY KEY,
             rfo_homo_avg REAL,
             rfo_hemi_avg REAL,
@@ -34,10 +32,10 @@ cur.executescript('''
             bar_homo_avg REAL,
             bar_hemi_avg REAL,
             bar_null_avg REAL
-);
+)''')
 
 
-CREATE TABLE raw_data (
+cur.execute('''CREATE TABLE raw_data (
             qcid TEXT UNIQUE PRIMARY KEY,
             rfo_homo INTEGER,
             rfo_hemi INTEGER,
@@ -64,6 +62,7 @@ CREATE TABLE raw_data (
             pm2_null INTEGER,
             bar_homo INTEGER,
             bar_hemi INTEGER,
-            bar_null INTEGER,
+            bar_null INTEGER
 
-''')
+)''')
+
