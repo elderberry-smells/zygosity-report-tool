@@ -26,7 +26,10 @@ data = cur.execute("SELECT * FROM SP_details NATURAL JOIN zygosity")
 
 with open(report_name + '.csv', 'wb') as f:
     writer = csv.writer(f)
-    writer.writerow(['QC ID#', 'BATCH #', 'INSPECTION LOT', 'DETAILS', 'PLANT #', 'MATERIAL', 'RECEIVED', 'REPORTED', 'RFO HOMO', 'RFO HEMI', 'RFO NULL', 'FAD2A HOMO', 'FAD2A HEMI', 'FAD2A NULL', 'FAD3A HOMO', 'FAD3A HEMI', 'FAD3A NULL', 'FAD3C HOMO', 'FAD3C HEMI', 'FAD3C NULL', 'ACYTO(%)', 'BCYTO(%)', 'RFO IN A LINE (BULK)', 'RFO IN B LINE (BULK)'])
+    writer.writerow(['QC ID#', 'BATCH #', 'INSPECTION LOT', 'DETAILS', 'PLANT #', 'MATERIAL', 'RECEIVED', 'REPORTED',
+                     'YEAR', 'RFO HOMO', 'RFO HEMI', 'RFO NULL', 'FAD2A HOMO', 'FAD2A HEMI', 'FAD2A NULL', 'FAD3A HOMO',
+                     'FAD3A HEMI', 'FAD3A NULL', 'FAD3C HOMO', 'FAD3C HEMI', 'FAD3C NULL', 'ACYTO(%)', 'BCYTO(%)',
+                     'RFO IN A LINE (BULK)', 'RFO IN B LINE (BULK)'])
     for line in data:
         if line[0] in samples:
-            writer.writerow(line[:22])
+            writer.writerow(line[:25])
